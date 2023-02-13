@@ -1,0 +1,96 @@
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAppointments (20230213184735)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "appointments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230213184735"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-02-13 18:48:04.465009"], ["updated_at", "2023-02-13 18:48:04.465009"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/v1/appointments" for ::1 at 2023-02-13 13:52:42 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/v1/appointments"):
+  
+Started GET "/favicon.ico" for ::1 at 2023-02-13 13:52:43 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/v1/appointment" for ::1 at 2023-02-13 13:52:59 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/v1/appointment"):
+  
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 13:54:00 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1768)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAppointment Create (1.8ms)[0m  [1m[32mINSERT INTO "appointments" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "appointment 1"], ["body", "you have an appointment at 1pm January 28th 2023"], ["created_at", "2023-02-13 19:00:00.368681"], ["updated_at", "2023-02-13 19:00:00.368681"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAppointment Create (2.4ms)[0m  [1m[32mINSERT INTO "appointments" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "appointment 2"], ["body", "you have an appointment at 1pm January 30th 2023"], ["created_at", "2023-02-13 19:00:17.912962"], ["updated_at", "2023-02-13 19:00:17.912962"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:18:35 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.2ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 32ms (Views: 20.4ms | ActiveRecord: 1.0ms | Allocations: 7855)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:18:35 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.2ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 936)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:25:23 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.8ms | Allocations: 1104)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:25:51 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.1ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 946)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:28:57 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 946)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:28:57 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 934)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:29:09 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 946)
+
+
+Started GET "/api/v1/appointments" for ::1 at 2023-02-13 14:29:10 -0500
+Processing by Api::V1::AppointmentsController#index as HTML
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT "appointments".* FROM "appointments"[0m
+  ↳ app/controllers/api/v1/appointments_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.4ms | Allocations: 934)
+
+
